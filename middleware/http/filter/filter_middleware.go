@@ -122,7 +122,8 @@ func (m *Middleware) writeBackHeaders(meta *oFilterMiddlewareMetadata, ctx *fast
 	// 覆盖地回填指定的内容
 	filterResp.Header.VisitAll(func(k []byte, v []byte) {
 		if m.findItem(k, meta.Tmp_parms) == true {
-			newV := string(v) + "-changed"
+			// for test, newV := string(v) + "-changed"
+			newV := string(v)
 			if meta.Tmp_cookie_flag == false {
 				ctx.Response.Header.Del(string(k))
 				ctx.Response.Header.Add(string(k), newV)
@@ -171,6 +172,11 @@ func (m *Middleware) GetHandler(metadata middleware.Metadata) (func(h fasthttp.R
 				//3. get the specific item from Cookie first.
 				var cookieV []byte
 				for _, k := range meta.Tmp_parms {
+					//生产环境， 要过滤 header_key_flag_forward_GrayRun 这个值。
+					//需要测试时，可以注释这处理，方便测试。
+					if strings.Compare(header_key_flag_forward_GrayRun, k) == 0 {
+						continue
+					}
 					cookieV = ctx.Request.Header.Cookie(k)
 					if cookieV != nil {
 						mParms[k] = string(cookieV)
@@ -198,7 +204,12 @@ func (m *Middleware) GetHandler(metadata middleware.Metadata) (func(h fasthttp.R
 					mParms[header_key_host] = string(v)
 				} else if meta.Tmp_cookie_flag == false && m.findItem(k, meta.Tmp_parms) == true {
 					//3. get the specific item.
-					mParms[string(k)] = string(v)
+					//生产环境， 要过滤 header_key_flag_forward_GrayRun 这个值。
+					//需要测试时，可以注释这处理，方便测试。
+					if bytes.Equal([]byte(header_key_flag_forward_GrayRun), k) == false {
+						mParms[string(k)] = string(v)
+					}
+
 				}
 			})
 
@@ -250,8 +261,8 @@ func (m *Middleware) GetHandler(metadata middleware.Metadata) (func(h fasthttp.R
 				//gray run
 				errGray := m.grayRunHandler(ctx, val_filter_err_url)
 				if errGray != nil {
-					m.logger.Error("failed to send request to gray run micro service, return 499 of status code. ", errGray.Error())
-					ctx.Response.SetStatusCode(499)
+					m.logger.Error("failed to send request to gray run micro service, return 503 of status code. ", errGray.Error())
+					ctx.Response.SetStatusCode(503)
 					ctx.Response.SetBody([]byte(meta.Filter_gray_run_err_body))
 					return
 				}
