@@ -35,7 +35,7 @@ Docker Image的创建备注<br>
 sudo vi /etc/systemd/system/docker.service.d/http-proxy.conf<br>
 
 [Service]
-Environment="HTTP_PROXY=192.x.x.x:xxxx" "HTTPS_PROXY=192.x.x.x:xxxx" "NO_PROXY=localhost,127.0.0.1,192.168.49.2"
+>Environment="HTTP_PROXY=192.x.x.x:xxxx" "HTTPS_PROXY=192.x.x.x:xxxx" "NO_PROXY=localhost,127.0.0.1,192.168.49.2"<br>
 
 >启动minikube 时，如果要访问墙外url，加上proxy env, 再启动minikube。<br>
 >>export HTTP_PROXY=http://192.x.x.x:xxxx<br>
