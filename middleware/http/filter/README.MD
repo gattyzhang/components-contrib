@@ -15,14 +15,14 @@ filter 集成测试步骤
     https://github.com/gattyzhang/dapr/tree/master/docs/development<br>
     https://docs.dapr.io
 
-Docker Image的创建备注：
+Docker Image的创建备注：<br>
 命令： make docker-build
-1. env   
+1. env<br>   
 export DAPR_REGISTRY=gatty.pcauto<br>
-export DAPR_TAG=dev<br>
-    a.dapr用户是使用host方式运行dapr，开发和调试方便.
-    b.需要部署到minikube k8s时， 需要通过dock image save和load命令，导入最新的daprd image到gatty用户的docker上.
-    c.在k8s上部署自己定制dapr的middleware时，只需修改业务微服务上的dapr sidecar-image的注入就可以了，dapr-system namespace下面的DAPR deploy是不需要任何修改的。
+export DAPR_TAG=dev<br><br>
+    a.dapr用户是使用host方式运行dapr，开发和调试方便.<br>
+    b.需要部署到minikube k8s时， 需要通过dock image save和load命令，导入最新的daprd image到gatty用户的docker上.<br>
+    c.在k8s上部署自己定制dapr的middleware时，只需修改业务微服务上的dapr sidecar-image的注入就可以了，dapr-system namespace下面的DAPR deploy是不需要任何修改的。<br>
     d.业务微服务注入包含filter的daprd的写法：<br>
 annotations:<br>
     dapr.io/sidecar-image: gatty.pcauto:dev...<br>
