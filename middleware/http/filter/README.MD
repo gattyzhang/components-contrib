@@ -13,8 +13,8 @@ filter集成测试步骤<br>
 开发机器OS： 深度操作系统(Deepin GNU/Linux 20.3), Docker v19.03.8, Minikube v1.18.1, go v1.17.2<br>
 >为了可以同时使用host方式的dapr和k8s的daps， minikube运行在gatty用户下，host的dapr是运行在dapr用户下的。<br>
 >设置本地开发环境参考了这里<br>
->>    https://github.com/gattyzhang/dapr/tree/master/docs/development<br>
->>    https://docs.dapr.io
+>>https://github.com/gattyzhang/dapr/tree/master/docs/development<br>
+>>https://docs.dapr.io
 
 
 创建Docker Image的备注<br>
@@ -37,11 +37,11 @@ sudo vi /etc/systemd/system/docker.service.d/http-proxy.conf<br>
 [Service]
 >Environment="HTTP_PROXY=192.x.x.x:xxxx" "HTTPS_PROXY=192.x.x.x:xxxx" "NO_PROXY=localhost,127.0.0.1,192.168.49.2"<br>
 
->启动minikube 时，如果要访问墙外url，加上proxy env, 再启动minikube。<br>
+>另，启动minikube 时，如果要访问墙外url，加上proxy env, 再启动minikube。<br>
 >>export HTTP_PROXY=http://192.x.x.x:xxxx<br>
 >>export HTTPS_PROXY=http://192.x.x.x:xxxx<br>
 >>export NO_PROXY=localhost,127.0.0.1,192.168.49.2(缺省已经有了，可以不运行)<br>
 
 
-3. 注意：
-HTTP的自定义header item， key不能包含"_"字符, 应该使用"-"， 这个才有更好兼容性，否则会给nginx等过滤掉的。 例如"Test-Header-Key"。
+其他
+>HTTP的自定义header item， key不能包含"_"字符, 应该使用"-"， 这个才有更好兼容性，否则会给nginx等过滤掉的。 例如"Test-Header-Key"。
