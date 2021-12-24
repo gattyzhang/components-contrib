@@ -10,7 +10,7 @@ filter集成测试步骤<br>
 >c. postman 访问 filter部署到的dapr环境。<br>
 
 
-开发机器OS： 深度操作系统(Deepin GNU/Linux 20.3), Docker v19.03.8, Minikube v1.18.1, go v1.17.2<br>
+我的开发机器OS： 深度操作系统(Deepin GNU/Linux 20.3), Docker v19.03.8, Minikube v1.18.1, go v1.17.2<br>
 >为了可以同时使用host方式的dapr和k8s的daps， minikube运行在gatty用户下，host的dapr是运行在dapr用户下的。<br>
 >设置本地开发环境参考了这里<br>
 >>https://github.com/gattyzhang/dapr/tree/master/docs/development<br>
