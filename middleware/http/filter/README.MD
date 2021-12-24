@@ -4,6 +4,11 @@ A customized filter middleware of DAPR.
 主要是给应用系统层面使用的一个中间件，所以适应场景是很专注的，不考虑过多横向扩展性。
 这里使用的场景是这样的，构建一套适应多租户使用的类SAAS系统，需要把业务范围的微服务群和多租户鉴权/权限管理控制/基于租户功能灰度上线等范围的微服务群这2部分工作完全分离，分别由2个开发小组负责开发及后续运维。为此通过DAPR及这个http filter middleware,达到期望目标。
 
+filter代码编译，按DAPR的开发要求设置环境， git代码要这2个地方获取。
+>https://github.com/gattyzhang/dapr.git<br>
+>https://github.com/gattyzhang/components-contrib.git
+
+
 filter集成测试步骤<br>
 >a. 运行 webserver.go。 端口8001，只能通过IP访问，不能使用localhost,127.0.0.1访问。<br>
 >b. filter yaml的filter_url 指向上一步的webserver的地址。<br>
