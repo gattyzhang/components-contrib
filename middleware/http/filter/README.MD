@@ -14,9 +14,9 @@ filter 集成测试步骤
 
 
 开发机器OS： 深度操作系统(Deepin GNU/Linux 20.3), Docker v19.03.8, Minikube v1.18.1, go v1.17.2
-设置本地开发环境参考了这里
-https://github.com/gattyzhang/dapr/tree/master/docs/development
-及https://docs.dapr.io的说明。
+设置本地开发环境参考了这里<br>
+    https://github.com/gattyzhang/dapr/tree/master/docs/development
+    https://docs.dapr.io
 
 Docker Image的创建备注：
 命令： make docker-build
