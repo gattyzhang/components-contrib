@@ -1,5 +1,5 @@
 # dapr-middleware-http-filter
-a customized filter middleware of DAPR.
+A customized filter middleware of DAPR.
 
 主要是给应用系统层面使用的一个中间件，所以适应场景是很专注的，不考虑过多横向扩展性。
 这里使用的场景是这样的，构建一套适应多租户使用的类SAAS系统，需要把业务范围的微服务群和多租户鉴权/权限管理控制/基于租户功能灰度上线等范围的微服务群这2部分工作完全分离，分别由2个开发小组负责开发及后续运维。为此通过DAPR及这个http filter middleware,达到期望目标。
