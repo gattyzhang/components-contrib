@@ -10,7 +10,7 @@ filter 集成测试步骤
 3. postman 访问 filter部署到的dapr环境。
 4. 自定义的filter仅仅包含在daprd image，所以只需要修改业务微服务的注入(deployment.yaml -> annotations:）<br>
                 dapr.io/sidecar-image: gatty.pcauto/daprd:x.x.x<br>
-                dapr.io/sidecar-listen-addresses: 0.0.0.0"
+                dapr.io/sidecar-listen-addresses: 0.0.0.0
 
 
 开发机器OS： 深度操作系统(Deepin GNU/Linux 20.3), Docker v19.03.8, Minikube v1.18.1, go v1.17.2
