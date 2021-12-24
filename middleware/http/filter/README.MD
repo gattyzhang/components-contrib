@@ -11,7 +11,7 @@ c. postman 访问 filter部署到的dapr环境。
 
 
 开发机器OS： 深度操作系统(Deepin GNU/Linux 20.3), Docker v19.03.8, Minikube v1.18.1, go v1.17.2<br>
-为了可以同时使用host方式的dapr和k8s的daps， minikube运行在gatty用户下，host的dapr是运行在dapr用户下的。
+为了可以同时使用host方式的dapr和k8s的daps， minikube运行在gatty用户下，host的dapr是运行在dapr用户下的。<br>
 设置本地开发环境参考了这里<br>
     https://github.com/gattyzhang/dapr/tree/master/docs/development<br>
     https://docs.dapr.io
@@ -20,15 +20,15 @@ c. postman 访问 filter部署到的dapr环境。
 Docker Image的创建备注<br>
 命令： make docker-build
 1. env<br>   
-        export DAPR_REGISTRY=gatty.pcauto<br>
-        export DAPR_TAG=dev<br><br>
-        a.dapr用户是使用host方式运行dapr，开发和调试方便.<br>
-        b.需要部署到minikube k8s时， 需要通过dock image save和load命令，导入最新的daprd image到gatty用户的docker上.<br>
-        c.在k8s上部署自己定制dapr的middleware时，只需修改业务微服务上的dapr sidecar-image的注入就可以了，dapr-system namespace下面的DAPR deploy是不需要任何修改的。<br>
-        d.业务微服务注入包含filter的daprd的写法：<br>
-                annotations:<br>
-                dapr.io/sidecar-image: gatty.pcauto:dev...<br>
-                dapr.io/sidecar-listen-addresses: 0.0.0.0
+>export DAPR_REGISTRY=gatty.pcauto<br>
+>export DAPR_TAG=dev<br><br>
+>>a.dapr用户是使用host方式运行dapr，开发和调试方便.<br>
+>>b.需要部署到minikube k8s时， 需要通过dock image save和load命令，导入最新的daprd image到gatty用户的docker上.<br>
+>>c.在k8s上部署自己定制dapr的middleware时，只需修改业务微服务上的dapr sidecar-image的注入就可以了，dapr-system namespace下面的DAPR deploy是不需要任何修改的。<br>
+>>d.业务微服务注入包含filter的daprd的写法：<br>
+>>>annotations:<br>
+>>>>dapr.io/sidecar-image: gatty.pcauto:dev...<br>
+>>>>dapr.io/sidecar-listen-addresses: 0.0.0.0
 
 
 2. docker 设置
