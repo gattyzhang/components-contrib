@@ -8,9 +8,9 @@ filter 集成测试步骤
 1. 运行 webserver.go。 端口8001，只能通过IP访问，不能使用localhost,127.0.0.1访问。
 2. filter yaml的filter_url 指向上一步的webserver的地址。
 3. postman 访问 filter部署到的dapr环境。
-4. 自定义的filter仅仅包含在daprd image，所以只需要注入的内容(deployment.yaml -> annotations:
-        dapr.io/sidecar-image: gatty.pcauto/daprd:2.5.4
-        dapr.io/sidecar-listen-addresses: 0.0.0.0)
+4. 自定义的filter仅仅包含在daprd image，所以只需要修改业务微服务的注入(deployment.yaml -> annotations:
+        "dapr.io/sidecar-image: gatty.pcauto/daprd:x.x.x"
+        "dapr.io/sidecar-listen-addresses: 0.0.0.0")
 
 
 开发机器OS： 深度操作系统(Deepin GNU/Linux 20.3), Docker v19.03.8, Minikube v1.18.1, go v1.17.2
