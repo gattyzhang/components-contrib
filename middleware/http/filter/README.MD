@@ -21,8 +21,8 @@ filter 集成测试步骤
 Docker Image的创建备注：
 命令： make docker-build
 1. env   
-export DAPR_REGISTRY=gatty.pcauto 
-export DAPR_TAG=dev
+export DAPR_REGISTRY=gatty.pcauto<br>
+export DAPR_TAG=dev<br>
 (a.本地设置了gatty.pcauto， 通过本地镜像，直接在k8s运行, 在dapr用户build， 导到gatty用户minik8s 运行. ）
 
 b.dapr用户是使用host方式运行dapr，开发和调试的.
@@ -39,12 +39,11 @@ sudo vi /etc/systemd/system/docker.service.d/http-proxy.conf
 [Service]
 Environment="HTTP_PROXY=192.x.x.x:xxxx" "HTTPS_PROXY=192.x.x.x:xxxx" "NO_PROXY=localhost,127.0.0.1,192.168.49.2"
 
-启动minikube 时，如果要访问墙外url，加上proxy env, 再启动minikube。
-
-export HTTP_PROXY=http://192.x.x.x:xxxx
-export HTTPS_PROXY=http://192.x.x.x:xxxx
+启动minikube 时，如果要访问墙外url，加上proxy env, 再启动minikube。<br>
+export HTTP_PROXY=http://192.x.x.x:xxxx<br>
+export HTTPS_PROXY=http://192.x.x.x:xxxx<br>
 export NO_PROXY=localhost,127.0.0.1,192.168.49.2(缺省已经有了，可以不运行)
 
 
 3. 注意：
-自定义http的header时， 不能使用"_", 应该使用"-"， 这个才有更好兼容性，否则会给过滤掉。 例如"Test-Header-Key"。
+HTTP的自定义header item， key不能包含"_"字符, 应该使用"-"， 这个才有更好兼容性，否则会给nginx等过滤掉的。 例如"Test-Header-Key"。
