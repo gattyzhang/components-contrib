@@ -1,3 +1,6 @@
+# Add a new customized middle ware of http filter for applications integration.
+https://github.com/gattyzhang/components-contrib/blob/middleware_filter/middleware/http/filter/README.MD
+
 # Components Contrib
 
 [![Build Status](https://github.com/dapr/components-contrib/workflows/components-contrib/badge.svg?event=push&branch=master)](https://github.com/dapr/components-contrib/actions?workflow=components-contrib)
